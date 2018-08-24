@@ -18,9 +18,9 @@ count = 0
 
 dbc.executescript('''
 CREATE TABLE IF NOT EXISTS Trades (
-    pair TEXT,
-    stamp TEXT UNIQUE,
-    data TEXT
+    pair    TEXT,
+    stamp   TEXT UNIQUE,
+    data    TEXT
 )
 ''')
 
