@@ -53,8 +53,11 @@ while True:
             sys.exit(1)
         except Exception as e:
             timer += 1
-            error = 'Error: '+ table + ' ' + str(sys.exc_info()[0]) + ' - ' + str(e) + ' - Timestamp: ' + str(datetime.datetime.now()) + ' - Timer: ' + str(timer)
+            error = 'Error: ' + table + ' ' + str(sys.exc_info()[0]) + ' - ' + str(e) + ' - Timestamp: ' + str(datetime.datetime.now()) + ' - Timer: ' + str(timer)
             print(error)
+            message = 'Message from ' + r_trades.url + " - " + r_trades.text
+            print(message)
             logging.error(error)
+            logging.error(message)
             time.sleep(timer)
             continue
