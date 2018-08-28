@@ -35,8 +35,7 @@ for pair in pairs:
         price           FLOAT,
         amount          FLOAT,
         buy_sell        TEXT,
-        market_limit    TEXT,
-        misc            TEXT
+        market_limit    TEXT
     )'''
     dbc.execute(create_table)
     print('Create table', table, 'for pair:', pair)
@@ -58,8 +57,7 @@ while True:
                 price,
                 amount,
                 buy_sell,
-                market_limit,
-                misc) VALUES ( ?, ?, ?, ?, ?, ?, ? )'''
+                market_limit) VALUES ( ?, ?, ?, ?, ?, ? )'''
             for item in r_trades.json()['result'][pair]:
                 dbc.execute(insert_table, (
                 memoryview(pair.encode()),
@@ -67,8 +65,7 @@ while True:
                 item[0],
                 item[1],
                 memoryview(item[3].encode()),
-                memoryview(item[4].encode()),
-                memoryview(item[5].encode())
+                memoryview(item[4].encode())
                 ))
             db.commit()
             timer = 0
